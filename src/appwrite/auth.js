@@ -14,7 +14,8 @@ class AuthService {
         try {
             return this.account.create(ID.unique(), email, password, name)
         } catch (error) {
-            throw error
+            console.log("Appwrite authService error : " + error)
+            return false
         }
     }
 
@@ -22,7 +23,8 @@ class AuthService {
         try {
             return this.account.createEmailPasswordSession(email, password)
         } catch (error) {
-            throw error
+            console.log("Appwrite authService error : " + error)
+            return false
         }
     }
 
@@ -30,7 +32,8 @@ class AuthService {
         try {
             return this.account.createEmailPasswordSession(email, password)
         } catch (error) {
-            throw error
+            console.log("Appwrite authService error : " + error)
+            return false
         }
     }
 
@@ -38,7 +41,8 @@ class AuthService {
         try {
             return this.account.get()
         } catch (error) {
-            throw error
+            console.log("Appwrite authService error : " + error)
+            return false
         }
     }
 
@@ -46,7 +50,8 @@ class AuthService {
         try {
             return this.account.deleteSessions()
         } catch (error) {
-            throw error
+            console.log("Appwrite authService error : " + error)
+            return false
         }
     }
 
