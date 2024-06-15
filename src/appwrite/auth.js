@@ -4,15 +4,17 @@ import conf from "../conf/conf";
 class AuthService {
     client = new Client()
     account;
+
     constructor() {
         this.client
-            .setEndpoint('https://cloud.appwrite.io/v1')
+            .setEndpoint(conf.appwriteUrl)
             .setProject(conf.appwriteProjectId);
-        this.account = new Account()
+        this.account = new Account(this.client)
     }
+
     async createAccount(email, password, name) {
         try {
-            return this.account.create(ID.unique(), email, password, name)
+            return await this.account.create(ID.unique(), email, password, name)
         } catch (error) {
             console.log("Appwrite authService error : " + error)
             return false
@@ -21,7 +23,7 @@ class AuthService {
 
     async login(email, password) {
         try {
-            return this.account.createEmailPasswordSession(email, password)
+            return await this.account.createEmailPasswordSession(email, password)
         } catch (error) {
             console.log("Appwrite authService error : " + error)
             return false
@@ -30,31 +32,31 @@ class AuthService {
 
     async login(email, password) {
         try {
-            return this.account.createEmailPasswordSession(email, password)
+            return await this.account.createEmailPasswordSession(email, password)
         } catch (error) {
             console.log("Appwrite authService error : " + error)
             return false
         }
     }
 
-    async getUser() {
+    async getCurrentUser() {
         try {
-            return this.account.get()
+            return await this.account.get()
         } catch (error) {
             console.log("Appwrite authService error : " + error)
             return false
         }
+
     }
 
     async logout() {
         try {
-            return this.account.deleteSessions()
+            return await this.account.deleteSessions()
         } catch (error) {
             console.log("Appwrite authService error : " + error)
             return false
         }
     }
-
 }
 
 
