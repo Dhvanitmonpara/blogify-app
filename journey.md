@@ -21,3 +21,6 @@ This is a journey file which is helpful to understand the flow of the code.
 - Creation of `Header`, `Footer` and `Loading` components in `src/Components/` folder.
 - Reference: [chai aur code: react + appwrite](https://youtu.be/8QGKg_W5sDQ?si=Z7Zz5huUP1J0Ci35)
 
+# 17th June 2024:
+- created production grade components. And used `forwardRef` in `src/Components/Input.jsx`.
+- Reference: [chai aur code: react + appwrite](https://youtu.be/BSaYsHVpaK0?si=aaA2K2sUwPo3-Yeh)
