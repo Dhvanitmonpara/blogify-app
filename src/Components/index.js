@@ -9,6 +9,8 @@ import Login from "./Login.jsx"
 import Signup from "./Signup.jsx"
 import AuthLayout from './AuthLayout.jsx'
 import Select from './Select.jsx'
+import RTE from "./RTE.jsx"
+// import PostForm from "./PostForm.jsx"  FIXME: giving some error
 
 export {
     Footer,
@@ -21,5 +23,7 @@ export {
     Login,
     Signup,
     Select,
-    AuthLayout
+    AuthLayout,
+    RTE,
+    // PostForm
 }
