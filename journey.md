@@ -1,4 +1,5 @@
 This is a journey file which is helpful to understand the flow of the code.
+Reference repo: [github](https://github.com/hiteshchoudhary/chai-aur-react/tree/main/12MegaBlog)
 
 # 13th June 2024:
 - declared environmental variables in `.env` file. And assign all variables to the `src/conf/conf.js` file.
@@ -22,5 +23,12 @@ This is a journey file which is helpful to understand the flow of the code.
 - Reference: [chai aur code: react + appwrite](https://youtu.be/8QGKg_W5sDQ?si=Z7Zz5huUP1J0Ci35)
 
 # 17th June 2024:
+
+- **Session-01**
 - created production grade components. And used `forwardRef` in `src/Components/Input.jsx`.
 - Reference: [chai aur code: react + appwrite](https://youtu.be/BSaYsHVpaK0?si=aaA2K2sUwPo3-Yeh)
+
+- **Session-02**
+- Created more components like Login, Signup and AuthLayout.
+- Used `react-hook-from` in Login and Signup Components.
+- reference: [chai aur code: react + appwrite](https://youtu.be/lfMyCuB6xfc?si=eA7czUJq87GPhdFJ)
