@@ -10,7 +10,8 @@ import Signup from "./Signup.jsx"
 import AuthLayout from './AuthLayout.jsx'
 import Select from './Select.jsx'
 import RTE from "./RTE.jsx"
-// import PostForm from "./PostForm.jsx"  FIXME: giving some error
+import PostForm from "./PostForm.jsx"
+import PostCard from './PostCard.jsx'
 
 export {
     Footer,
@@ -25,5 +26,6 @@ export {
     Select,
     AuthLayout,
     RTE,
-    // PostForm
+    PostForm,
+    PostCard,
 }

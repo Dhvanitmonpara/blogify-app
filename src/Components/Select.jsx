@@ -6,7 +6,7 @@ function Select({
   className = "",
   placeholder = "Select something",
   ...props
-}) {
+}, ref) {
   return (
     <div className="relative">
       {label && <label htmlFor={id} className=""></label>}

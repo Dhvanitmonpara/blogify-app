@@ -1,7 +1,7 @@
 import conf from '../conf/conf.js'
-import { Client, ID, Databases, Storage, Query } from 'appwrite'
+import { Client, ID, Storage } from 'appwrite'
 
-export class bucketService {
+class BucketService {
     client = new Client
     bucket
 
