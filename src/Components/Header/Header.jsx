@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const authStatus = useSelector((state) => state.status); // FIXME: something is wrong here
+  const authStatus = useSelector((state) => state.auth.status); 
 
   const navItems = [
     {
@@ -40,7 +40,7 @@ const Header = () => {
   };
 
   return (
-    <header className="text-gray-400 bg-gray-900 body-font">
+    <header className="text-gray-400 bg-gray-900 body-font border-b-4 border-gray-800">
       <Container>
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <div className="flex justify-between items-center w-full md:w-auto">
