@@ -13,7 +13,6 @@ export class DBService {
     }
 
     async createPost({ title, slug, content, featuredImage, status, userId}) {
-        console.log('dbconfig : ' + userId)
         try {
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
