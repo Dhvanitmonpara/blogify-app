@@ -5,8 +5,8 @@ import parse from "html-react-parser";
 
 function PostCard({ $id, title, featuredImage, content }) {
   return (
-    <Link to={`/post/${$id}`} className="">
-      <div className="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
+    <Link to={`/post/${$id}`}>
+      <div className="h-full border-2 border-gray-800 hover:bg-gray-800 rounded-lg overflow-hidden">
         <img
           className="lg:h-48 md:h-36 w-full object-cover object-center"
           src={bucketService.filePreview(featuredImage)}

@@ -18,7 +18,7 @@ export default function PostForm({ post }) {
     });
 
   const navigate = useNavigate();
-  const userData = useSelector((state) => state.auth.userData);
+  const userData = useSelector((state) => state.auth.userData.userData);
 
   const submit = async (data) => {
     if (post) {
@@ -129,7 +129,6 @@ export default function PostForm({ post }) {
         />
         <Button
           type="submit"
-          bgColor={post ? "bg-green-500" : undefined}
           className="w-full"
         >
           {post ? "Update" : "Submit"}
