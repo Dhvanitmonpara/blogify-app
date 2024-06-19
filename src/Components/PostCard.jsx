@@ -5,10 +5,7 @@ import parse from "html-react-parser";
 
 function PostCard({ $id, title, featuredImage, content }) {
   return (
-    <Link
-      to={`/post/${$id}`}
-      className=""
-    >
+    <Link to={`/post/${$id}`} className="">
       <div className="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
         <img
           className="lg:h-48 md:h-36 w-full object-cover object-center"
@@ -19,7 +16,9 @@ function PostCard({ $id, title, featuredImage, content }) {
           <h1 className="title-font text-lg font-medium text-white mb-3">
             {title}
           </h1>
-          <p className="leading-relaxed mb-4 h-10 text-nowrap overflow-hidden">{parse(content)}</p>
+          <p className="leading-relaxed mb-7 text-gray-400 h-7 text-nowrap overflow-hidden">
+            {parse(content)}
+          </p>
           <div className="flex items-center flex-wrap text-purple-400">
             Learn More
             <svg
