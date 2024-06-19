@@ -19,7 +19,6 @@ export default function PostForm({ post }) {
 
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
-  const userId = userData.userData.$id;
 
   const submit = async (data) => {
     if (post) {
@@ -47,7 +46,7 @@ export default function PostForm({ post }) {
         data.featuredImage = fileId;
         const dbPost = await dbService.createPost({
           ...data,
-          userId: userId,
+          userId: userData.$id,
         });
 
         if (dbPost) {
@@ -79,8 +78,8 @@ export default function PostForm({ post }) {
   }, [watch, slugTransform, setValue]);
 
   return (
-    <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-      <div className="w-2/3 px-2">
+    <form onSubmit={handleSubmit(submit)} className="flex items-center justify-center flex-col md:flex-row flex-wrap">
+      <div className="lg:w-2/3 w-11/12 px-2">
         <Input
           label="Title :"
           placeholder="Title"
@@ -105,7 +104,7 @@ export default function PostForm({ post }) {
           defaultValue={getValues("content")}
         />
       </div>
-      <div className="w-1/3 px-2">
+      <div className="lg:w-1/3 w-11/12 lg:mt-0 mt-9 px-2">
         <Input
           label="Featured Image :"
           type="file"
@@ -116,7 +115,7 @@ export default function PostForm({ post }) {
         {post && (
           <div className="w-full mb-4">
             <img
-              src={bucketService.getFilePreview(post.featuredImage)}
+              src={bucketService.filePreview(post.featuredImage)}
               alt={post.title}
               className="rounded-lg"
             />

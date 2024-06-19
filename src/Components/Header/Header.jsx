@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Logo, LogoutBtn } from "../index";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Header = () => {
@@ -40,7 +40,7 @@ const Header = () => {
   };
 
   return (
-    <header className="text-gray-400 bg-gray-900 body-font border-b-4 border-gray-800">
+    <header className="text-gray-400 bg-gray-900 body-font border-b-4 fixed z-50 w-screen border-gray-800">
       <Container>
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <div className="flex justify-between items-center w-full md:w-auto">
@@ -49,7 +49,6 @@ const Header = () => {
               className="flex title-font font-medium items-center text-white md:mb-0"
             >
               <Logo />
-              <span className="ml-3 text-xl">Tailblocks</span>
             </Link>
 
             {/* Hamburger menu for mobile */}
@@ -71,13 +70,13 @@ const Header = () => {
           <nav className="hidden md:ml-auto md:flex flex-wrap items-center text-base justify-center">
             {navItems.map((item) =>
               item.active ? (
-                <Link
-                  className="mr-5 hover:text-white"
+                <NavLink
+                  className={({isActive})=>(`mr-5 hover:text-white ${isActive ? 'text-white' : 'text-gray-400'}`)}
                   to={item.slug}
                   key={item.name}
                 >
                   {item.name}
-                </Link>
+                </NavLink>
               ) : null
             )}
           </nav>
@@ -87,7 +86,7 @@ const Header = () => {
 
           {/* Sidebar menu for mobile */}
           <div
-            className={`absolute top-0 left-0 h-full w-64 bg-gray-800 transform ${
+            className={`absolute top-0 z-50 h-screen left-0 w-64 bg-gray-800 transform ${
               isMenuOpen ? "translate-x-0" : "-translate-x-full"
             } transition-transform duration-300 ease-in-out md:hidden`}
           >
@@ -111,13 +110,13 @@ const Header = () => {
               <nav className="mt-8">
                 {navItems.map((item) =>
                   item.active ? (
-                    <Link
-                      className="block mb-4 hover:text-white"
+                    <NavLink
+                      className={({isActive})=>(`block mb-4 hover:text-white ${isActive ? 'text-white' : 'text-gray-400'}`)}
                       to={item.slug}
                       key={item.name}
                     >
                       {item.name}
-                    </Link>
+                    </NavLink>
                   ) : null
                 )}
               </nav>
