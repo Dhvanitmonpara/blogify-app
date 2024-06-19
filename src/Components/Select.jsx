@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useId } from "react";
 
 function Select({
   options,
@@ -7,6 +7,7 @@ function Select({
   placeholder = "Select something",
   ...props
 }, ref) {
+  const id = useId()
   return (
     <div className="relative">
       {label && <label htmlFor={id} className=""></label>}

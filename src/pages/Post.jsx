@@ -38,7 +38,7 @@ export default function Post() {
       <Container>
         <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
           <img
-            src={bucketService.getFilePreview(post.featuredImage)}
+            src={bucketService.filePreview(post.featuredImage)}
             alt={post.title}
             className="rounded-xl"
           />

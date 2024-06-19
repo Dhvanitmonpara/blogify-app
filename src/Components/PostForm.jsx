@@ -1,8 +1,8 @@
 import React, { useCallback } from "react";
 import { useForm } from "react-hook-form";
-import { Button, Input, RTE, Select } from "./index";
-import dbService from '../appwrite/dbConfig'
-import bucketService from '../appwrite/bucketConfig'
+import { Button, Input, RTE, Select } from "../Components/index";
+import dbService from "../appwrite/dbConfig";
+import bucketService from "../appwrite/bucketConfig";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -19,6 +19,7 @@ export default function PostForm({ post }) {
 
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
+  const userId = JSON.stringify(userData.userData.$id);
 
   const submit = async (data) => {
     if (post) {
@@ -44,9 +45,10 @@ export default function PostForm({ post }) {
       if (file) {
         const fileId = file.$id;
         data.featuredImage = fileId;
+        console.log(userData.userData.$id);
         const dbPost = await dbService.createPost({
           ...data,
-          userId: userData.$id,
+          userId: userId,
         });
 
         if (dbPost) {

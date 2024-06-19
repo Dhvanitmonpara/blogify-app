@@ -11,11 +11,11 @@ class AuthService {
             .setProject(conf.appwriteProjectId);
         this.account = new Account(this.client)
     }
+
     async createAccount({ email, password, name }) {
         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name);
             if (userAccount) {
-                console.log(userAccount)
                 return this.login({ email, password });
             } else {
                 return userAccount;
@@ -25,12 +25,12 @@ class AuthService {
         }
     }
 
-    async login({email, password}) {
+    async login({ email, password }) {
         try {
-            return await this.account.createEmailPasswordSession(email, password)
+            return await this.account.createEmailPasswordSession(email, password);
         } catch (error) {
             console.log("Appwrite authService error : " + error)
-            return false
+
         }
     }
 
@@ -39,10 +39,8 @@ class AuthService {
             return await this.account.get();
         } catch (error) {
             console.log("Appwrite authService error : " + error)
-            // throw error
+            return null;
         }
-
-        return null;
     }
 
     async logout() {

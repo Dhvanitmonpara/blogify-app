@@ -12,7 +12,8 @@ export class DBService {
         this.databases = new Databases(this.client)
     }
 
-    async createPost({ title, slug, content, featuredImage, status, userId }) {
+    async createPost({ title, slug, content, featuredImage, status, userId}) {
+        console.log('dbconfig : ' + userId)
         try {
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
@@ -23,7 +24,7 @@ export class DBService {
                     content,
                     featuredImage,
                     status,
-                    userId
+                    userId 
                 }
             )
         } catch (error) {
