@@ -4,6 +4,8 @@ import dbService from "../appwrite/dbConfig";
 import bucketService from "../appwrite/bucketConfig";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
+import { MdModeEditOutline } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 export default function Post() {
   const [post, setPost] = useState(null);
@@ -43,18 +45,38 @@ export default function Post() {
               alt={post.title}
             />
             <div className="my-8">
+              {isAuthor && (
+                <div className="w-full flex md:hidden mb-5">
+                  <Link
+                    to={`/edit-post/${post.$id}`}
+                  >
+                    <button className="bg-gray-200 hover:bg-gray-400 text-slate-900 font-bold py-2 px-4 rounded mr-2">
+                      <MdModeEditOutline />
+                    </button>
+                  </Link>
+                  <button
+                    onClick={deletePost}
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                  >
+                    <MdDelete />
+                  </button>
+                </div>
+              )}
               <div className="flex items-center justify-between mb-6">
                 <h1 className="text-3xl font-bold text-white">{post.title}</h1>
                 {isAuthor && (
                   <div>
-                    <Link to={`/edit-post/${post.$id}`}>
+                    <Link
+                      to={`/edit-post/${post.$id}`}
+                      className="md:inline-block hidden"
+                    >
                       <button className="bg-gray-200 hover:bg-gray-400 text-slate-900 font-bold py-2 px-4 rounded mr-2">
                         Edit
                       </button>
                     </Link>
                     <button
                       onClick={deletePost}
-                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                      className="bg-red-500 md:inline-block hidden hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                     >
                       Delete
                     </button>

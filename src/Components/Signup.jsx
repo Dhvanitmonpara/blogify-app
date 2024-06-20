@@ -12,47 +12,44 @@ function Signup() {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
 
-    const create = async(data) => {
-      setError("")
-      try {
-          const userData = await authService.createAccount(data)
-          if (userData) {
-              const userData = await authService.getCurrentUser()
-              if(userData) dispatch(login(userData));
-              navigate("/")
-          }
-      } catch (error) {
-          setError(error.message)
+  const create = async (data) => {
+    setError("");
+    try {
+      const userData = await authService.createAccount(data);
+      if (userData) {
+        const userData = await authService.getCurrentUser();
+        if (userData) dispatch(login(userData));
+        navigate("/");
       }
-  }
-
-
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
   return (
-    <div className="flex items-center justify-center">
-      <div
-        className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}
-      >
-        <div className="mb-2 flex justify-center">
-          <span className="inline-block w-full max-w-[100px]">
+    <div className="flex items-center h-full lg:h-[600px] justify-center w-full">
+      <div className="mx-auto w-full max-w-lg bg-gray-900 rounded p-10 border-gray-700 border-2">
+        <div className="mb-2 flex justify-center w-full items-center">
+          <span className="w-full mb-8 flex justify-center items-center">
             <Logo width="100%" />
           </span>
         </div>
-        <h2 className="text-center text-2xl font-bold leading-tight">
+        <h2 className="text-center text-2xl mb-5 font-semibold text-gray-400 leading-tight">
           Sign up to create account
         </h2>
-        <p className="mt-2 text-center text-base text-black/60">
+        <p className="mt-2 text-center text-base text-gray-50">
           Already have an account?&nbsp;
           <Link
             to="/login"
             className="font-medium text-primary transition-all duration-200 hover:underline"
           >
-            Sign In
+            <span className="text-gray-200 underline hover:text-gray-300">
+              Log In
+            </span>
           </Link>
         </p>
         {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
-
-        <form onSubmit={handleSubmit(create)}>
+        <form onSubmit={handleSubmit(create)} className="mt-8">
           <div className="space-y-5">
             <Input
               label="Full Name: "
@@ -82,7 +79,9 @@ function Signup() {
                 required: true,
               })}
             />
-            <Button type="submit" className="w-full bg-slate-900">
+          </div>
+          <div className="mt-8">
+            <Button type="submit" className="w-full">
               Create Account
             </Button>
           </div>

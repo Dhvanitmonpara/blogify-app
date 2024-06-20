@@ -27,25 +27,27 @@ function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center w-full">
+    <div className="flex items-center h-full lg:h-[600px] justify-center w-full">
       <div
-        className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}
+        className="mx-auto w-full max-w-lg bg-gray-900 rounded p-10 border-gray-700 border-2"
       >
-        <div className="mb-2 flex justify-center">
-          <span className="inline-block w-full max-w-[100px]">
+        <div className="mb-2 flex justify-center w-full items-center">
+          <span className="w-full mb-8 flex justify-center items-center">
             <Logo width="100%" />
           </span>
         </div>
-        <h2 className="text-center text-2xl font-bold leading-tight">
-          Sign in to your account
+        <h2 className="text-center text-2xl mb-5 font-semibold text-gray-400 leading-tight">
+          Log in to your account
         </h2>
-        <p className="mt-2 text-center text-base text-black/60">
+        <p className="mt-2 text-center text-base text-gray-50">
           Don&apos;t have any account?&nbsp;
           <Link
             to="/signup"
             className="font-medium text-primary transition-all duration-200 hover:underline"
           >
-            Sign Up
+            <span className="text-gray-200 underline hover:text-gray-300">
+              Sign Up
+            </span>
           </Link>
         </p>
         {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
@@ -72,6 +74,8 @@ function Login() {
                 required: true,
               })}
             />
+          </div>
+          <div className="mt-8">
             <Button type="submit" className="w-full">
               Sign in
             </Button>

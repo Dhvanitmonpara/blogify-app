@@ -104,11 +104,11 @@ export default function PostForm({ post }) {
           defaultValue={getValues("content")}
         />
       </div>
-      <div className="lg:w-1/3 w-11/12 lg:mt-0 mt-9 px-2">
+      <div className="lg:w-1/3 w-11/12 lg:mt-0 mt-9 space-y-5 px-2">
         <Input
           label="Featured Image :"
           type="file"
-          className="mb-4"
+          className="mb-1"
           accept="image/png, image/jpg, image/jpeg, image/gif"
           {...register("image", { required: !post })}
         />

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import dbService from "../appwrite/dbConfig";
 import { Container, PostCard } from "../Components";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -36,9 +37,9 @@ function Home() {
         <Container>
           <div className="flex flex-wrap h-[600px] justify-center items-center">
             <div className="p-2 w-full">
-              <h1 className="text-2xl font-semibold cursor-pointer text-gray-200 hover:text-gray-400">
+              <Link to="/login" className="text-2xl hover:underline font-semibold cursor-pointer text-gray-200 hover:text-gray-400">
                 Login to read posts
-              </h1>
+              </Link>
             </div>
           </div>
         </Container>
