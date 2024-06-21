@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login as authLogin } from "../store/authSlice";
-import { Button, Input, Logo } from "./index";
+import { Button, Input, Logo, LoadingBtn } from "./index";
 import { useDispatch } from "react-redux";
 import authService from "../appwrite/auth";
 import { useForm } from "react-hook-form";
@@ -11,26 +11,28 @@ function Login() {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const login = async (data) => {
+    setLoading(true);
     setError("");
     try {
       const session = await authService.login(data);
       if (session) {
         const userData = await authService.getCurrentUser();
         if (userData) dispatch(authLogin(userData));
+        setLoading(false);
         navigate("/");
       }
     } catch (error) {
       setError(error.message);
+      setLoading(false);
     }
   };
 
   return (
     <div className="flex items-center h-full lg:h-[600px] justify-center w-full">
-      <div
-        className="mx-auto w-full max-w-lg bg-gray-900 rounded p-10 border-gray-700 border-2"
-      >
+      <div className="mx-auto w-full max-w-lg bg-gray-900 rounded p-10 border-gray-700 border-2">
         <div className="mb-2 flex justify-center w-full items-center">
           <span className="w-full mb-8 flex justify-center items-center">
             <Logo width="100%" />
@@ -76,9 +78,13 @@ function Login() {
             />
           </div>
           <div className="mt-8">
-            <Button type="submit" className="w-full">
-              Sign in
-            </Button>
+            {!loading ? (
+              <Button type="submit" className="w-full">
+                Sign in
+              </Button>
+            ) : (
+              <LoadingBtn className="w-full" />
+            )}
           </div>
         </form>
       </div>

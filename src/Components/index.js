@@ -12,6 +12,7 @@ import Select from './Select.jsx'
 import RTE from "./RTE.jsx"
 import PostForm from "./PostForm.jsx"
 import PostCard from './PostCard.jsx'
+import LoadingBtn from './LoadingBtn.jsx'
 
 export {
     Footer,
@@ -28,4 +29,5 @@ export {
     RTE,
     PostForm,
     PostCard,
+    LoadingBtn
 }

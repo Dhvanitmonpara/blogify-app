@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import authService from "../appwrite/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../store/authSlice";
-import { Button, Input, Logo } from "./index.js";
+import { Button, Input, Logo, LoadingBtn } from "./index.js";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 
@@ -11,18 +11,23 @@ function Signup() {
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
+  const [loading, setLoading] = useState(false)
 
   const create = async (data) => {
+    setLoading(true)
     setError("");
     try {
       const userData = await authService.createAccount(data);
       if (userData) {
         const userData = await authService.getCurrentUser();
         if (userData) dispatch(login(userData));
+        setLoading(false)
         navigate("/");
       }
     } catch (error) {
+      console.log("error returned");
       setError(error.message);
+      setLoading(false)
     }
   };
 
@@ -81,9 +86,13 @@ function Signup() {
             />
           </div>
           <div className="mt-8">
-            <Button type="submit" className="w-full">
-              Create Account
-            </Button>
+            {!loading ? (
+              <Button type="submit" className="w-full">
+                Create Account
+              </Button>
+            ) : (
+              <LoadingBtn className="w-full" />
+            )}
           </div>
         </form>
       </div>
