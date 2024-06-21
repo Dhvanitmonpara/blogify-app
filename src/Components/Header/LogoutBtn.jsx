@@ -27,7 +27,7 @@ function LogoutBtn() {
   return (
     <button
       onClick={logoutHandler}
-      className="hidden md:inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"
+      className="inline-flex items-center bg-gray-800 border-0 md:py-1 md:px-3 focus:outline-none hover:text-white md:hover:bg-gray-700 rounded text-base md:mt-0"
     >
       Logout
       {loading ? (

@@ -79,10 +79,9 @@ const Header = () => {
                 </NavLink>
               ) : null
             )}
+          {authStatus && <LogoutBtn />}
           </nav>
 
-          {/* Button for desktop */}
-          {authStatus && <LogoutBtn />}
 
           {/* Sidebar menu for mobile */}
           <div
@@ -119,8 +118,8 @@ const Header = () => {
                     </NavLink>
                   ) : null
                 )}
+               {authStatus && <LogoutBtn />}
               </nav>
-              {authStatus && <LogoutBtn />}
             </div>
           </div>
         </div>
