@@ -10,7 +10,7 @@ This is a full-featured blog application built with React.js, Appwrite (Backend-
 * **Responsive Design:** Seamlessly adapts to all devices for a consistent and delightful user experience.
 * **Beautiful UI:** A visually appealing and intuitive interface enhances user engagement.
 
-See the live app [here](https://appwrite-blog-app-mauve.vercel.app/).
+See the live app [here](https://getblogify.vercel.app/).
 
 ### Tech Stack
 
